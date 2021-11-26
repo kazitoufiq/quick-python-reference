@@ -1,0 +1,17 @@
+for frame in pd.unique(df['frame_index']):
+    #print(type(frame))
+    temp_df = df.loc[df['frame_index'] == frame, ['Condition (Main Code)', 'Severity (Quantification)']]
+    t_score_accu = 0
+    for severity in temp_df['Severity (Quantification)']:
+        if severity == 'S':
+            t_score_accu += 1
+        elif severity == 'M':
+            t_score_accu += 2
+        elif severity == 'L':
+            t_score_accu += 3
+        else:
+            t_score_accu += 0
+    temp_score = t_score_accu
+    temp_df['frame_score'] = temp_score
+    print(temp_df)
+            
